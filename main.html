@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️ Message for Caca ❤️</title>
+    <style>        
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            height: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            overflow-y: scroll; /* Enable vertical scrolling */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ffe6e6, #ffb3b3);
+            background-size: 200% 200%;
+            color: #8B0000;
+            padding: 20px;
+            perspective: 1000px;
+            animation: gradientBG 15s ease infinite;
+            box-sizing: border-box;
+            min-height: 100vh;
+            font-size: 14px; /* Made font smaller */
+            overflow-y: auto;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto; /* Changed from 20px auto to 0 auto */
+            display: flex;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            padding: 20px;
+            box-sizing: border-box;
+            justify-content: center;
+            align-items: flex-start; /* Changed from center to flex-start */
+            min-height: 100vh;
+        }
+
+        .page {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            box-shadow: 
+                0 0 20px rgba(139, 0, 0, 0.2),
+                0 0 40px rgba(139, 0, 0, 0.1);
+            border-radius: 15px;
+            transform-origin: left center;
+            position: relative;
+            width: 100%;
+            height: auto;
+            border: 2px solid rgba(139, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #8B0000;
+            font-size: 24px; /* Made heading smaller */
+        }
+
+        .slideshow {
+            width: 100%;
+            max-width: 1000px; /* Change this to adjust overall width */
+            height: 800px; /* Change this to adjust overall height */
+            position: relative;
+            overflow: hidden;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            display: block;
+        }
+
+        .slide img, .slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .heart {
+            font-size: 30px; /* Made heart smaller */
+            text-align: center;
+            margin: 20px 0;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .message {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 13px; /* Made message text smaller */
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px; /* Made buttons smaller */
+            font-size: 16px; /* Made button text smaller */
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-yes {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-no {
+            background: #f8f9fa;
+            color: #495057;
+        }
+
+        .thinking-bubble {
+            position: fixed;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeInOut 2s ease-in-out;
+            z-index: 1000;
+            font-size: 13px; /* Made thinking bubble text smaller */
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(20px); }
+            20% { opacity: 1; transform: translateY(0); }
+            80% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+
+        .celebration-overlay.active {
+            opacity: 1;
+        }
+
+        .celebration-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+            background: rgba(255, 182, 193, 0.7);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.8s;
+            pointer-events: none;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: fixed;
+            overflow: hidden;
+        }
+
+        .emoji-rain {
+            position: absolute;
+            top: -50px; /* Start above viewport */
+            font-size: 24px;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            z-index: 1000;
+            pointer-events: none;
+            animation: fall 3s linear infinite, sway 3s ease-in-out infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .page {
+                padding: 20px;
+            }
+
+            .slideshow {
+                height: 200px;
+                width: 200px; /* Added to maintain square on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="celebration-overlay"></div>
+    <div class="container">
+        <div class="page">
+            <h1>Dear Caca</h1>
+            <div class="slideshow">
+                <div class="slide active">
+                    <img src="photo1.jpg" alt="Our first photo together">
+                </div>
+                <div class="slide">
+                    <img src="photo5.JPEG" alt="Beautiful memories">
+                </div>
+                <div class="slide">
+                    <img src="photo7.JPEG" alt="Beautiful memories">
+                </div>
+                <div class="slide">
+                    <video src="video1.MP4" autoplay muted loop></video>
+                </div>
+                <div class="slide">
+                    <video src="video2.MOV" autoplay muted loop></video>
+                </div>
+                <div class="slide">
+                    <video src="video4.MOV" autoplay muted loop></video>
+                </div>
+            </div>
+            <div class="message">
+                <p>Aku tahu mungkin ini terasa cepat, tapi aku nggak bisa terus menyimpan perasaan ini sendiri. Dari awal kita kenal, aku udah merasa ada sesuatu yang beda. Setiap momen bareng kamu—walaupun kita baru sekali jalan, sering sleepcall, atau sekadar chatting dan kabar-kabaran—semuanya bikin aku ngerasa nyaman banget.</p>
+
+                <p>Aku juga pengen bilang kalau aku benar-benar menghargai semua effort kamu, kayak selalu sempat bales chat aku atau ngasih kabar di tengah kesibukan kamu saat shift kerja. Buat aku, itu bukan hal kecil. Itu nunjukin gimana kamu juga peduli dan bikin aku makin yakin kalau kamu spesial.</p>
+
+                <p>Jadi hari ini aku mau jujur. Aku suka sama kamu, Ca. Aku nggak tahu gimana ke depannya, tapi yang aku tahu, aku pengen ada di sisimu, bahagiain kamu, dan bikin kamu merasa dihargai seperti kamu menghargai aku.
+                Will you be mine?</p>
+                <div class="buttons">
+                    <div class="emoji-container">
+                        <button id="btnYes" class="btn btn-yes">Yes, I Will! ❤️</button>
+                    </div>
+                    <div class="emoji-container">
+                        <button id="btnNo" class="btn btn-no">Let me think 💭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnYes = document.getElementById('btnYes');
+            const btnNo = document.getElementById('btnNo');
+            const thoughts = [
+                "Hmm... you're so sweet! 🤔",
+                "Let me count our beautiful memories... 💭",
+                "You make my heart flutter... 💝",
+                "I'm getting butterflies! 🦋",
+                "Your love makes me smile... 😊",
+                "Just teasing you! 😘"
+            ];
+            let thoughtIndex = 0;
+
+            function createEmoji() {
+                const emoji = document.createElement('div');
+                emoji.className = 'emoji-rain';
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emoji.style.animationDuration = Math.random() * 3 + 2 + 's';
+                emoji.innerHTML = ['🥰', '❤️', '💖', '💘', '💝', '💕', '💓', '💗'][Math.floor(Math.random() * 8)];
+                document.body.appendChild(emoji);
+                emoji.addEventListener('animationend', () => emoji.remove());
+            }
+
+            async function sendEmail() {
+                try {
+                    const response = await fetch('https://formspree.io/f/mvggwgvy', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            message: 'Caca said YES! 💝',
+                            timestamp: new Date().toLocaleString()
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to send email notification');
+                    }
+                } catch (error) {
+                    console.error('Error sending email:', error);
+                }
+            }
+
+            function startEmojiRain() {
+                const overlay = document.querySelector('.celebration-overlay');
+                overlay.classList.add('active');
+                
+                let emojiCount = 0;
+                const maxEmojis = 100;
+                
+                sendEmail();
+                
+                const rainInterval = setInterval(() => {
+                    if (emojiCount >= maxEmojis) {
+                        clearInterval(rainInterval);
+                        setTimeout(() => {
+                            overlay.classList.remove('active');
+                        }, 3000);
+                        return;
+                    }
+                    createEmoji();
+                    emojiCount++;
+                }, 50);
+            }
+
+            function showThinkingBubble(e) {
+                const existingBubble = document.querySelector('.thinking-bubble');
+                if (existingBubble) {
+                    existingBubble.remove();
+                }
+
+                const bubble = document.createElement('div');
+                bubble.className = 'thinking-bubble';
+                bubble.style.position = 'fixed';
+                bubble.style.left = e.clientX + 'px';
+                bubble.style.top = (e.clientY - 100) + 'px';
+                bubble.innerHTML = thoughts[thoughtIndex];
+                thoughtIndex = (thoughtIndex + 1) % thoughts.length;
+                
+                document.body.appendChild(bubble);
+                bubble.style.display = 'block';
+                
+                setTimeout(() => {
+                    bubble.remove();
+                }, 2000);
+
+                btnNo.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+            }
+
+            btnYes.addEventListener('click', startEmojiRain);
+            btnNo.addEventListener('mouseover', showThinkingBubble);
+
+            btnYes.addEventListener('mouseenter', () => {
+                document.body.style.background = 'linear-gradient(45deg, #ffb3b3, #ff8080)';
+            });
+
+            btnNo.addEventListener('mouseenter', () => {
+                document.body.style.background = 'linear-gradient(45deg, #ffcccc, #ffb3b3)';
+            });
+
+            btnYes.addEventListener('mouseleave', () => {
+                document.body.style.background = 'linear-gradient(45deg, #ffe6e6, #ffb3b3)';
+            });
+
+            btnNo.addEventListener('mouseleave', () => {
+                document.body.style.background = 'linear-gradient(45deg, #ffe6e6, #ffb3b3)';
+                btnNo.style.transform = 'none';
+            });
+
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+
+            setInterval(nextSlide, 3000);
+        });
+    </script>
+</body>
+</html>
